@@ -1,0 +1,63 @@
+// reset.scss
+
+// Box-sizing reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Reset margins and paddings
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol, li,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+// Remove list styles
+ul, ol {
+  list-style: none;
+}
+
+// Remove default hyperlink styles
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Reset heading styles
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
+// Reset form element styles
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  appearance: none;
+}
+
+// Reset image border
+img {
+  border-style: none;
+}
+
+// Reset table border
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

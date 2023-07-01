@@ -1,27 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.scss'
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home/Home';
+import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
+import './App.scss';
+import Profile from './pages/Profile/Profile';
+import NavBar from './components/NavBar/NavBar';
+import LeftBar from './components/LeftBar/LeftBar';
+import RightBar from './components/RightBar/RightBar';
+// Import các components khác
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  // const {currentUser} = useContext(AuthContext);
+  const currentUser = true;
+
+  // const { darkMode } = useContext(DarkModeContext);
+  const Layout = () => {
+    return (
+      <div>
+        <NavBar />
+        <div style={{ display: "flex" }}>
+          <LeftBar />
+          <div style={{ flex: 6 }}>
+            <Outlet />
+          </div>
+          <RightBar />
+        </div>
+      </div>
+    );
+  };
+
+  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/profile/:id",
+          element: <Profile />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href='https://react.dev' target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-    </>
-  )
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
-export default App
+export default App;
