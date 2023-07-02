@@ -22,11 +22,11 @@ const NavBar: React.FC = (props) => {
         <AiOutlineHome />
           {darkMode ? <BsSun  onClick={toggle}/> : <FiMoon onClick={toggle}/>}
         <BsGrid />
-        <div className={styles.search}>
+      </div>
+      <div className={styles.search}>
           <AiOutlineSearch />
           <input type='text' placeholder='Search...' />
         </div>
-      </div>
       <div className={styles.right}>
         <BsPerson />
         <AiOutlineMail />
