@@ -11,12 +11,44 @@ $space-c-b-desktop: 5rem;
 $space-c-x-desktop: 14.4rem;
 
 //colors
-$color-p-black: #000000;
-$color-p-white: #ffffff;
-$color-border: rgba(29, 39, 49, 0.6509803922);
-$color-background: #151d25;
-$color-item: #101821;
-$color-h3: #ff9601;
-$color-text: #fff;
-$color-primary: rgba(0, 123, 196, 1);
+// App.scss
+
+:root {
+  --color-p-black: #000000;
+  --color-p-white: #ffffff;
+  --color-border: lightgray;
+  --color-background: hsl(0, 0%, 100%);
+  --color-item: #101821;
+  --color-h3: #ff9601;
+  --color-text: whitesmoke;
+  --color-text-soft: #555;
+  --color-primary: darkblue;
+  --color-bg-soft: #f6f3f3;
+}
+
+.light {
+  --color-p-black: #000000;
+  --color-p-white: #ffffff;
+  --color-border: lightgray;
+  --color-background: hsl(0, 0%, 100%);
+  --color-item: #101821;
+  --color-h3: #ff9601;
+  --color-text: #333;
+  --color-text-soft: #555;
+  --color-primary: darkblue;
+  --color-bg-soft: #f6f3f3;
+}
+
+.dark {
+  --color-p-black: whitesmoke;
+  --color-p-white: #000;
+  --color-border: #444;
+  --color-background: #222;
+  --color-item: #101821;
+  --color-h3: #ff9601;
+  --color-text: whitesmoke;
+  --color-text-soft: lightgray;
+  --color-primary: whitesmoke;
+  --color-bg-soft: #333;
+}
 

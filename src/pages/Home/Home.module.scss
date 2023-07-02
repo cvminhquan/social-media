@@ -1,0 +1,15 @@
+@import '../../App.scss';
+
+.home {
+  height: 2000px;
+  padding: 20px 70px;
+  background-color: var(--color-bg-soft);
+
+  @include mobile {
+    padding: 10px;
+  }
+
+  @include tablet {
+    padding: 20px;
+  }
+}

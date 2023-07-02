@@ -1,38 +1,39 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './NavBar.module.scss'
 import { Link } from 'react-router-dom'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
-import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined'
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
+import { AiOutlineHome, AiOutlineSearch, AiOutlineMail } from 'react-icons/ai'
+import { BsGrid, BsPerson, BsSun } from 'react-icons/bs'
+import { MdNotificationsNone } from 'react-icons/md'
+import { FiMoon } from 'react-icons/fi'
+import classNames from 'classnames'
+import { DarkModeContext } from '~/context/darkModeContext'
+import { AuthContext } from '~/context/authContext'
 
 const NavBar: React.FC = (props) => {
   // const currentUser = false;
+  const {toggle, darkMode} = useContext(DarkModeContext)
+  const {currentUser} = useContext(AuthContext)
   return (
-    <div className={styles.navbar}>
+    <div className={classNames(styles.navbar)}>
       <div className={styles.left}>
         <Link to='/' style={{ textDecoration: 'none' }}>
           <span>lamasocial</span>
         </Link>
-        <HomeOutlinedIcon />
-        {/* <DarkModeOutlinedIcon />
-        <GridViewOutlinedIcon /> */}
+        <AiOutlineHome />
+          {darkMode ? <BsSun  onClick={toggle}/> : <FiMoon onClick={toggle}/>}
+        <BsGrid />
         <div className={styles.search}>
-          <SearchOutlinedIcon />
+          <AiOutlineSearch />
           <input type='text' placeholder='Search...' />
         </div>
       </div>
       <div className={styles.right}>
-        {/* <PersonOutlinedIcon />
-        <EmailOutlinedIcon />
-        <NotificationsOutlinedIcon /> */}
+        <BsPerson />
+        <AiOutlineMail />
+        <MdNotificationsNone />
         <div className={styles.user}>
-          <img src="https://avatars.githubusercontent.com/u/105114297?v=4" alt='' />
-          <span>cvminhquan</span>
+          <img src={currentUser?.profilePic} alt='' />
+          <span>{currentUser?.name}</span>
         </div>
       </div>
     </div>

@@ -1,10 +1,28 @@
 @import 'src/assets/styles/reset';
 @import 'src/assets/styles/mixin';
-@import 'src/assets/styles/variables';
 @import 'src/assets/styles/class';
-body{
+@import 'src/assets/styles/variables';
+body {
   font-family: 'Open sans', sans-serif;
 }
+$themes: (
+  light: (
+    textColor: #000,
+    bg: white,
+    logo: darkblue,
+    bgSoft: #f6f3f3,
+    textColorSoft: #555,
+    border: lightgray
+  ),
+  dark: (
+    textColor: whitesmoke,
+    bg: #222,
+    logo: white,
+    bgSoft: #333,
+    textColorSoft: lightgray,
+    border: #444
+  )
+);
 .container {
   max-width: 1200px;
   margin: 0 auto;
